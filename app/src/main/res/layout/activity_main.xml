@@ -7,13 +7,82 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--PROFILE PICTURE-->
+    <ImageView
+        android:id="@+id/home_profile_image_view"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:src="@drawable/bvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/bvatar" />
+
+    <!--GREETING-->
     <TextView
+        android:id="@+id/home_greeting_top_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/margin_default"
+        android:text="Hello, Gaeul!"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/home_greeting_bottom_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/home_profile_image_view"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/home_greeting_bottom_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:text="@string/what_would_you_like_to_cook_today"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/home_profile_image_view"
+        app:layout_constraintStart_toStartOf="@+id/home_greeting_top_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/home_greeting_top_text_view" />
+
+    <!--SEARCH VIEW-->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/home_search_view"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:background="@drawable/search_view_bg"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toStartOf="@+id/home_setting_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_greeting_bottom_text_view"
+        app:queryBackground="@null"
+        app:queryHint="@string/search_label" />
+
+    <Button
+        android:id="@+id/home_setting_button"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:backgroundTint="@color/grey"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_settings"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/home_search_view"
+        app:layout_constraintTop_toTopOf="@+id/home_search_view" />
+
+    <!--RECYCLER VIEW-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_ingredient_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/home_search_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
